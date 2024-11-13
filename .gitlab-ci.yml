@@ -1,0 +1,25 @@
+stages:          # List of stages for jobs, and their order of execution
+  - build
+  - test
+  - deploy
+
+build-job:       # This job runs in the build stage, which runs first.
+  stage: build
+  image: maven:11
+  script:
+    - echo "Compiling the code..."
+    - mvn clean install
+    - echo "Compile complete."
+
+semgrep:
+  image: semgrep/semgrep            # A Docker image with Semgrep installed.
+  variables:
+    # Connect to Semgrep AppSec Platform through your SEMGREP_APP_TOKEN.
+    # Generate a token from Semgrep AppSec Platform > Settings and add it in below variable.
+    SEMGREP_APP_TOKEN: "5c2a721c5ea70bcc5356ab028c7e38625aca1356197866d36cfbdcf9e8ec2f92"
+    # Upload findings to GitLab SAST Dashboard:
+    SEMGREP_GITLAB_JSON: "1"            
+  script: semgrep ci --gitlab-sast > gl-sast-report.json || true
+  artifacts:
+    reports:
+      sast: gl-sast-report.json
