@@ -24,14 +24,7 @@
     <version>2.0.1-SNAPSHOT</version>
     <name>wicket-pwnedpasswords-validator</name>
     <description>A validator for Apache Wicket that checks if a given password has been pwned.</description>
-    <url>https://github.com/pingunaut/wicket-pwnedpasswords-validator</url>
-    <licenses>
-        <license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
+
     <properties>
         <wicket.version>8.0.0</wicket.version>
         <jetty9.version>9.2.24.v20180105</jetty9.version>
@@ -179,7 +172,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.21.0</version>
+                <version>2.22.0</version>
                 <configuration>
                     <argLine>${surefireArgLine}</argLine>
                 </configuration>
