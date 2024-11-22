@@ -46,9 +46,3 @@ jobs:
           # Generate a token from Semgrep AppSec Platform > Settings
           # and add it to your GitHub secrets.
           SEMGREP_APP_TOKEN: "4e4485e73a07808f2af8a5546e85fc29bed3d0ce4b21b8b6dd77ace1950bc3f8"
-
-      - name: Upload SARIF file for GitHub Advanced Security Dashboard
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: semgrep.sarif
-        if: always()
